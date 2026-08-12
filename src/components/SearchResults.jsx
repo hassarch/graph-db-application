@@ -1,55 +1,62 @@
 import React from 'react';
 
-function SearchResults({ results, onSelect, loading }) {
+function SearchResults({ results, onSelect, loading, hasSearched }) {
   if (loading) {
     return (
       <div className="loading">
         <div className="spinner"></div>
+        <span className="loading-text">Searching the graph…</span>
       </div>
     );
   }
 
-  if (results.length === 0) {
+  const items = Array.isArray(results) ? results : [];
+
+  if (items.length === 0) {
     return (
       <div className="empty-state">
-        <h3>No results</h3>
-        <p>Try searching for authors like "Sarah Chen" or topics like "Machine Learning"</p>
+        <h3>{hasSearched ? 'No results found' : 'Start exploring'}</h3>
+        <p>
+          Try searching for authors like <strong>"Sarah Chen"</strong> or topics like{' '}
+          <strong>"Machine Learning"</strong>.
+        </p>
       </div>
     );
   }
 
-  const getIcon = (type) => {
+  const getTypeLabel = (type) => {
     switch (type) {
-      case 'author': return '👤';
-      case 'paper': return '📄';
-      case 'topic': return '🏷️';
-      default: return '•';
+      case 'author': return 'Author';
+      case 'paper': return 'Paper';
+      case 'topic': return 'Topic';
+      default: return type;
     }
   };
 
+  const getBadgeClass = (type) =>
+    type === 'author' ? 'primary' : type === 'paper' ? 'secondary' : 'success';
+
   return (
     <div className="grid grid-2">
-      {results.map((result, index) => (
-        <div
-          key={index}
-          className="card"
+      {items.map((result, index) => (
+        <button
+          type="button"
+          key={`${result.type}-${result.id ?? result.name}-${index}`}
+          className="card card--interactive"
           onClick={() => onSelect(result)}
-          style={{ cursor: 'pointer' }}
         >
           <div className="card-title">
-            {getIcon(result.type)} {result.name}
+            {result.name}
           </div>
           <div className="card-subtitle">
-            <span className={`badge badge-${result.type === 'author' ? 'primary' : result.type === 'paper' ? 'secondary' : 'success'}`}>
-              {result.type}
-            </span>
-            {result.metric && (
+            <span className={`badge badge-${getBadgeClass(result.type)}`}>{result.type}</span>
+            {result.metric != null && (
               <span className="metric">
                 {result.type === 'author' ? `h-index: ${result.metric}` : `Year: ${result.metric}`}
               </span>
             )}
           </div>
-        </div>
+        </button>
       ))}
     </div>
   );
