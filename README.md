@@ -2,6 +2,12 @@
 
 A web application that visualizes and explores relationships between research papers, authors, institutions, and research topics using a graph database.
 
+## 📹 Demo
+
+https://github.com/user-attachments/assets/demo.mp4
+
+> *Watch a complete walkthrough showing search functionality, entity exploration, collaboration path finding, and analytics dashboard with professional UI.*
+
 ## Why a Graph Database?
 
 Research networks are inherently graph-structured. Key advantages over relational databases:
@@ -42,24 +48,9 @@ Research networks are inherently graph-structured. Key advantages over relationa
 - **AFFILIATED_WITH**: Author institutional affiliations over time
 - **LOCATED_IN**: Geographic location of institutions
 
-## Demo
-
-### 📹 Video Walkthrough
-
-<video src="./demo.mp4" width="100%" controls autoplay loop muted>
-  Your browser does not support the video tag.
-</video>
-
-*The video showcases:*
-- 🔍 **Search functionality** across authors, papers, and topics
-- 📄 **Entity exploration** with detailed views and relationships
-- 🕸️ **Collaboration path finding** between researchers
-- 📊 **Analytics dashboard** with stats and visualizations
-- ✨ **Professional UI** with smooth animations
-
 ## Features
 
-- 🔍 Search papers, authors, and topics
+- � Search papers, authors, and topics
 - 🕸️ Visualize collaboration networks
 - 📊 Find citation chains and impact analysis
 - 🌍 Explore geographic research distributions
