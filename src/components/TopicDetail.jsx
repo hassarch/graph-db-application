@@ -29,6 +29,7 @@ function TopicDetail({ name, onSelectEntity }) {
     return (
       <div className="loading">
         <div className="spinner"></div>
+        <span className="loading-text">Loading topic…</span>
       </div>
     );
   }
@@ -41,12 +42,12 @@ function TopicDetail({ name, onSelectEntity }) {
     return <div className="empty-state">No data found</div>;
   }
 
-  const { topic, papers, subtopics, parents } = data;
+  const { topic = {}, papers = [], subtopics = [], parents = [] } = data;
 
   return (
     <div>
       <div className="card">
-        <h2 className="card-title">🏷️ {topic.name}</h2>
+        <h2 className="card-title">{topic.name}</h2>
         <div className="card-content">
           <p>{topic.description}</p>
           <div style={{ marginTop: '1rem' }}>
@@ -57,7 +58,7 @@ function TopicDetail({ name, onSelectEntity }) {
 
       {parents.length > 0 && (
         <div className="section">
-          <h3 className="section-title">⬆️ Parent Topics</h3>
+          <h3 className="section-title">Parent Topics</h3>
           <div className="card">
             {parents.map((parent, index) => (
               <span
@@ -74,7 +75,7 @@ function TopicDetail({ name, onSelectEntity }) {
 
       {subtopics.length > 0 && (
         <div className="section">
-          <h3 className="section-title">⬇️ Subtopics</h3>
+          <h3 className="section-title">Subtopics</h3>
           <div className="card">
             {subtopics.map((subtopic, index) => (
               <span
@@ -91,7 +92,7 @@ function TopicDetail({ name, onSelectEntity }) {
 
       {papers.length > 0 && (
         <div className="section">
-          <h3 className="section-title">📄 Recent Papers</h3>
+          <h3 className="section-title">Recent Papers</h3>
           <div className="grid grid-2">
             {papers.slice(0, 10).map((paper, index) => (
               <div key={index} className="card">

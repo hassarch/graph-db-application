@@ -29,6 +29,7 @@ function AuthorDetail({ name, onSelectEntity }) {
     return (
       <div className="loading">
         <div className="spinner"></div>
+        <span className="loading-text">Loading author…</span>
       </div>
     );
   }
@@ -41,12 +42,12 @@ function AuthorDetail({ name, onSelectEntity }) {
     return <div className="empty-state">No data found</div>;
   }
 
-  const { author, papers, institutions, coauthors } = data;
+  const { author = {}, papers = [], institutions = [], coauthors = [] } = data;
 
   return (
     <div>
       <div className="card">
-        <h2 className="card-title">👤 {author.name}</h2>
+        <h2 className="card-title">{author.name}</h2>
         <div className="card-content">
           <p><strong>Email:</strong> {author.email}</p>
           <p><strong>h-index:</strong> {author.h_index}</p>
@@ -56,7 +57,7 @@ function AuthorDetail({ name, onSelectEntity }) {
 
       {institutions.length > 0 && (
         <div className="section">
-          <h3 className="section-title">🏛️ Affiliations</h3>
+          <h3 className="section-title">Affiliations</h3>
           <div className="card">
             {institutions.map((inst, index) => (
               <span key={index} className="badge badge-primary">{inst}</span>
@@ -67,7 +68,7 @@ function AuthorDetail({ name, onSelectEntity }) {
 
       {papers.length > 0 && (
         <div className="section">
-          <h3 className="section-title">📄 Publications ({papers.length})</h3>
+          <h3 className="section-title">Publications ({papers.length})</h3>
           <div className="grid grid-2">
             {papers.map((paper, index) => (
               <div key={index} className="card">
@@ -85,7 +86,7 @@ function AuthorDetail({ name, onSelectEntity }) {
 
       {coauthors.length > 0 && (
         <div className="section">
-          <h3 className="section-title">🤝 Frequent Collaborators</h3>
+          <h3 className="section-title">Frequent Collaborators</h3>
           <div className="card">
             {coauthors.map((coauthor, index) => (
               <span

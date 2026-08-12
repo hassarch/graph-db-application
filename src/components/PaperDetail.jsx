@@ -29,6 +29,7 @@ function PaperDetail({ doi, onSelectEntity }) {
     return (
       <div className="loading">
         <div className="spinner"></div>
+        <span className="loading-text">Loading paper…</span>
       </div>
     );
   }
@@ -41,12 +42,12 @@ function PaperDetail({ doi, onSelectEntity }) {
     return <div className="empty-state">No data found</div>;
   }
 
-  const { paper, authors, topics, references, citedBy } = data;
+  const { paper = {}, authors = [], topics = [], references = [], citedBy = [] } = data;
 
   return (
     <div>
       <div className="card">
-        <h2 className="card-title">📄 {paper.title}</h2>
+        <h2 className="card-title">{paper.title}</h2>
         <div className="card-subtitle">
           {paper.year} • DOI: {paper.doi}
         </div>
@@ -60,7 +61,7 @@ function PaperDetail({ doi, onSelectEntity }) {
 
       {authors.length > 0 && (
         <div className="section">
-          <h3 className="section-title">👥 Authors</h3>
+          <h3 className="section-title">Authors</h3>
           <div className="card">
             {authors.map((author, index) => (
               <span
@@ -77,7 +78,7 @@ function PaperDetail({ doi, onSelectEntity }) {
 
       {topics.length > 0 && (
         <div className="section">
-          <h3 className="section-title">🏷️ Topics</h3>
+          <h3 className="section-title">Topics</h3>
           <div className="card">
             {topics.map((topic, index) => (
               <span
@@ -94,7 +95,7 @@ function PaperDetail({ doi, onSelectEntity }) {
 
       {references.length > 0 && (
         <div className="section">
-          <h3 className="section-title">📚 References ({references.length})</h3>
+          <h3 className="section-title">References ({references.length})</h3>
           <div className="card">
             <ul className="list">
               {references.slice(0, 5).map((ref, index) => (
@@ -109,7 +110,7 @@ function PaperDetail({ doi, onSelectEntity }) {
 
       {citedBy.length > 0 && (
         <div className="section">
-          <h3 className="section-title">📈 Cited By ({citedBy.length})</h3>
+          <h3 className="section-title">Cited By ({citedBy.length})</h3>
           <div className="card">
             <ul className="list">
               {citedBy.slice(0, 5).map((cite, index) => (
