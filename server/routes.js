@@ -69,7 +69,7 @@ router.get('/search', async (req, res) => {
       cypher += `
         MATCH (p:Paper)
         WHERE toLower(p.title) CONTAINS toLower($query)
-        RETURN 'paper' as type, p.title as name, id(p) as id, p.year as metric
+        RETURN 'paper' as type, p.title as name, p.doi as id, p.year as metric
         LIMIT 10
       `;
     }
@@ -181,8 +181,9 @@ router.get('/collaboration-path', async (req, res) => {
       MATCH path = shortestPath((a1)-[:AUTHORED*..10]-(a2))
       WITH path, 
            [node in nodes(path) WHERE node:Author | node.name] as authors,
-           [node in nodes(path) WHERE node:Paper | node.title] as papers
-      RETURN authors, papers, length(path) as hops
+           [node in nodes(path) WHERE node:Paper | node.title] as papers,
+           length(path) as pathLength
+      RETURN authors, papers, pathLength as hops
       LIMIT 1
     `;
     
