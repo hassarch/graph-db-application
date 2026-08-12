@@ -23,6 +23,11 @@ export function initDriver() {
     maxConnectionLifetime: 3 * 60 * 60 * 1000, // 3 hours
     maxConnectionPoolSize: 50,
     connectionAcquisitionTimeout: 2 * 60 * 1000, // 2 minutes
+    // Return integers (counts, years, h-index, path length, ...) as native JS
+    // numbers instead of Neo4j Integer objects ({low, high}). Without this the
+    // API serializes them as {"low":N,"high":0} and the React client crashes
+    // trying to render an object as a child.
+    disableLosslessIntegers: true,
   });
 
   // Verify connectivity
