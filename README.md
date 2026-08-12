@@ -42,6 +42,16 @@ Research networks are inherently graph-structured. Key advantages over relationa
 - **AFFILIATED_WITH**: Author institutional affiliations over time
 - **LOCATED_IN**: Geographic location of institutions
 
+## Demo
+
+Watch the application in action:
+
+https://github.com/user-attachments/assets/[your-video-id-here]
+
+*A comprehensive walkthrough showing search functionality, entity exploration, collaboration path finding, and analytics dashboard.*
+
+> **Note:** The demo video is also available in the repository as `Screen Recording 2026-08-13 at 2.09.13 AM.mov`
+
 ## Features
 
 - 🔍 Search papers, authors, and topics
@@ -182,21 +192,23 @@ LIMIT 10
 - `GET /api/topics/:name` - Get topic details and related papers
 - `GET /api/stats` - Get database statistics
 
-## Screenshots
+## Screenshots & Demo
+
+For a complete walkthrough of all features, see the **[Demo Video](#demo)** section above.
 
 ### Search Interface
-The main search interface allows users to search across authors, papers, and topics with real-time results.
+The main search interface allows users to search across authors, papers, and topics with real-time results and smooth animations.
 
 ### Author Detail View
-Displays author information, publications, affiliations, and collaboration networks.
+Displays author information, publications, affiliations, and collaboration networks with interactive navigation.
 
 ### Collaboration Path Finder
-Interactive tool to discover connections between researchers through co-authorship chains.
+Interactive tool to discover connections between researchers through co-authorship chains with visual path display.
 
 ### Analytics Dashboard
-Comprehensive view of database statistics, influential authors, and research trends.
+Comprehensive view of database statistics, influential authors, cross-institutional collaborations, and topic co-occurrence trends.
 
-*Note: Screenshots should be added here after deployment showing actual UI interactions.*
+*For visual demonstrations of these features, please refer to the demo video at the top of this document.*
 
 ## Deployment
 
