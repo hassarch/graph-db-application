@@ -46,18 +46,16 @@ Research networks are inherently graph-structured. Key advantages over relationa
 
 ### 📹 Video Walkthrough
 
-<video src="./Screen%20Recording%202026-08-13%20at%202.09.13%20AM.mov" width="100%" controls>
-  Your browser does not support the video tag. <a href="./Screen%20Recording%202026-08-13%20at%202.09.13%20AM.mov">Download the demo video</a>.
+<video src="./demo.mp4" width="100%" controls autoplay loop muted>
+  Your browser does not support the video tag.
 </video>
 
-*The video includes a comprehensive walkthrough showing:*
+*The video showcases:*
 - 🔍 **Search functionality** across authors, papers, and topics
 - 📄 **Entity exploration** with detailed views and relationships
 - 🕸️ **Collaboration path finding** between researchers
 - 📊 **Analytics dashboard** with stats and visualizations
 - ✨ **Professional UI** with smooth animations
-
-> **Note:** If the video doesn't play inline, [click here to download](./Screen%20Recording%202026-08-13%20at%202.09.13%20AM.mov) the demo (~38 MB).
 
 ## Features
 
