@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Verify setup script
+      run: |
+        cp .env.example .env
+        echo "COGNODB_URI=bolt+s://test.example.com" >> .env
+        echo "COGNODB_USER=test" >> .env
+        echo "COGNODB_PASSWORD=test" >> .env
+    
+    - name: Build application
+      run: npm run build
+    
+    - name: Check for build artifacts
+      run: |
+        if [ ! -d "dist" ]; then
+          echo "Build failed - dist directory not found"
+          exit 1
+        fi
+        echo "Build successful"
