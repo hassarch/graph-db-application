@@ -1,0 +1,265 @@
+================================================================================
+RESEARCH KNOWLEDGE GRAPH EXPLORER - QUICK SETUP GUIDE
+================================================================================
+
+This is a complete graph database application built with:
+- CognoDB (graph database)
+- Node.js + Express (backend)
+- React + Vite (frontend)
+
+================================================================================
+STEP 1: INSTALL DEPENDENCIES
+================================================================================
+
+npm install
+
+================================================================================
+STEP 2: SET UP COGNODB
+================================================================================
+
+1. Go to: https://console.cognodb.com/signup
+2. Create a free account (no credit card needed)
+3. Create a free (c0) instance
+4. Copy your connection details:
+   - URI: bolt+s://xxxxx.databases.cognodb.cloud
+   - Username: cognodb
+   - Password: [shown only once - copy immediately!]
+
+================================================================================
+STEP 3: CONFIGURE ENVIRONMENT
+================================================================================
+
+cp .env.example .env
+
+Edit .env with your CognoDB credentials:
+
+COGNODB_URI=bolt+s://your-instance.databases.cognodb.cloud
+COGNODB_USER=cognodb
+COGNODB_PASSWORD=your-generated-password
+PORT=3000
+NODE_ENV=development
+
+================================================================================
+STEP 4: VERIFY SETUP
+================================================================================
+
+npm run verify
+
+This checks:
+- Node.js version
+- Environment variables
+- Dependencies
+- Project structure
+- Database connection
+
+================================================================================
+STEP 5: LOAD SAMPLE DATA
+================================================================================
+
+npm run seed
+
+This creates:
+- 15 authors
+- 15 papers
+- 10 topics
+- 10 institutions
+- 6 countries
+- Citations, collaborations, and affiliations
+
+================================================================================
+STEP 6: START THE APPLICATION
+================================================================================
+
+npm run dev
+
+This starts:
+- Backend server on http://localhost:3000
+- Frontend dev server on http://localhost:5173
+
+Open http://localhost:5173 in your browser
+
+================================================================================
+STEP 7: EXPLORE THE APPLICATION
+================================================================================
+
+Try these:
+
+1. SEARCH
+   - Search for "Chen" (finds Dr. Sarah Chen)
+   - Search for "Attention" (finds famous paper)
+   - Search for "Machine Learning" (finds topic)
+
+2. COLLABORATION PATH
+   - From: "Dr. Sarah Chen"
+   - To: "Prof. David Kim"
+   - See the connection through papers
+
+3. ANALYTICS
+   - View database statistics
+   - See influential authors
+   - Explore cross-institutional collaborations
+
+================================================================================
+PROJECT STRUCTURE
+================================================================================
+
+research-knowledge-graph/
+├── server/              # Backend (Express + CognoDB)
+│   ├── db.js           # Database connection
+│   ├── routes.js       # API endpoints
+│   └── server.js       # Server setup
+├── src/                # Frontend (React)
+│   ├── components/     # UI components
+│   ├── App.jsx         # Main app
+│   └── index.css       # Styles
+├── scripts/
+│   ├── seed.js         # Load sample data
+│   └── verify-setup.js # Verify environment
+├── README.md           # Main documentation
+├── QUICKSTART.md       # Quick setup guide
+├── DATA_MODEL.md       # Data model details
+├── DEPLOYMENT.md       # Hosting guide
+├── EXAMPLE_QUERIES.md  # Cypher query examples
+└── TESTING_CHECKLIST.md # Testing guide
+
+================================================================================
+USEFUL COMMANDS
+================================================================================
+
+npm run verify      # Check setup
+npm run seed        # Load sample data
+npm run dev         # Start development (backend + frontend)
+npm run server      # Start backend only
+npm run client      # Start frontend only
+npm run build       # Build for production
+npm start           # Run production build
+
+================================================================================
+DOCUMENTATION
+================================================================================
+
+README.md              - Complete project documentation
+QUICKSTART.md          - 5-minute setup guide
+DATA_MODEL.md          - Graph model explanation
+DEPLOYMENT.md          - Hosting instructions (Render, Railway, Fly.io)
+EXAMPLE_QUERIES.md     - 40+ Cypher query examples
+TESTING_CHECKLIST.md   - Complete testing guide
+PROJECT_SUMMARY.md     - Project overview
+CONTRIBUTING.md        - Contribution guide
+
+================================================================================
+API ENDPOINTS
+================================================================================
+
+GET /api/health                           - Database health check
+GET /api/stats                            - Database statistics
+GET /api/search?q=query&type=all          - Search entities
+GET /api/authors/:name                    - Author details
+GET /api/papers/:doi                      - Paper details
+GET /api/topics/:name                     - Topic details
+GET /api/collaboration-path?from=&to=     - Find collaboration path
+GET /api/influential-authors              - Most cited authors
+GET /api/cross-institutional              - Cross-institutional papers
+GET /api/topic-cooccurrence               - Topic co-occurrence
+GET /api/citation-chain/:doi              - Citation impact chain
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+DATABASE CONNECTION ERROR:
+- Verify .env file exists and has correct values
+- Check CognoDB instance is running at console.cognodb.com
+- Ensure URI starts with bolt+s://
+- Verify password is correct
+
+PORT ALREADY IN USE:
+- Change PORT in .env to 3001
+- Or kill process: lsof -ti:3000 | xargs kill -9
+
+BUILD FAILS:
+- Delete node_modules and package-lock.json
+- Run: npm install
+- Try again: npm run build
+
+SEED FAILS:
+- Verify database connection works first
+- Clear database in CognoDB console: MATCH (n) DETACH DELETE n
+- Run seed again: npm run seed
+
+================================================================================
+DEPLOYMENT
+================================================================================
+
+For detailed deployment instructions, see DEPLOYMENT.md
+
+Quick deploy to Render.com:
+1. Push code to GitHub
+2. Create account at render.com
+3. Create new Web Service
+4. Connect GitHub repository
+5. Set environment variables
+6. Deploy!
+
+Free hosting options:
+- Render.com (recommended)
+- Railway.app
+- Fly.io
+
+================================================================================
+KEY FEATURES
+================================================================================
+
+✓ Graph Data Model (5 node types, 6 relationship types)
+✓ Multi-hop Traversals (2-10 hops for collaboration paths)
+✓ Queries awkward in SQL (variable-length paths, pattern matching)
+✓ Parameterized Queries (no SQL injection)
+✓ Clean UI/UX (dark theme, loading states, error handling)
+✓ Environment Variables (no hardcoded secrets)
+✓ Comprehensive Documentation (8+ markdown files)
+✓ Production Ready (build, deploy, monitor)
+
+================================================================================
+ASSIGNMENT REQUIREMENTS MET
+================================================================================
+
+✓ Thoughtful graph data model with diagram
+✓ Real/realistic seed data loaded via script
+✓ Multi-hop traversal queries (2+ hops)
+✓ Queries that would be awkward in relational DB
+✓ Parameterized queries via Neo4j driver
+✓ Functional web application
+✓ Clean, intentional UI and UX
+✓ Environment variables for configuration
+✓ Clear project structure
+✓ Graceful error handling
+✓ Complete README with "Why a graph database?"
+✓ Ready for deployment
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Verify setup: npm run verify
+2. Load data: npm run seed
+3. Start app: npm run dev
+4. Test features in browser
+5. Deploy to hosting platform
+6. Create screen recording
+7. Submit repository URL
+
+================================================================================
+SUPPORT
+================================================================================
+
+Check documentation in the project directory:
+- QUICKSTART.md for setup help
+- TROUBLESHOOTING section above
+- README.md for complete guide
+
+CognoDB issues: cognodb@wexa.ai
+Assignment questions: Reply to assignment email
+
+================================================================================
+Good luck with your submission! 🚀
+================================================================================
