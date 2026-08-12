@@ -36,7 +36,7 @@ function CollaborationPath() {
   return (
     <div>
       <div className="card">
-        <h2 className="card-title">🕸️ Find Collaboration Path</h2>
+        <h2 className="card-title">Find Collaboration Path</h2>
         <p className="card-subtitle">
           Discover how two researchers are connected through co-authorships
         </p>
@@ -45,35 +45,23 @@ function CollaborationPath() {
           <div style={{ display: 'grid', gap: '1rem', marginBottom: '1rem' }}>
             <input
               type="text"
+              className="input"
               placeholder="From Author (e.g., Dr. Sarah Chen)"
               value={fromAuthor}
               onChange={(e) => setFromAuthor(e.target.value)}
-              style={{
-                padding: '0.75rem',
-                backgroundColor: 'var(--background)',
-                border: '1px solid var(--border)',
-                borderRadius: '0.5rem',
-                color: 'var(--text)',
-                fontSize: '1rem'
-              }}
+              aria-label="From author"
             />
             <input
               type="text"
+              className="input"
               placeholder="To Author (e.g., Prof. David Kim)"
               value={toAuthor}
               onChange={(e) => setToAuthor(e.target.value)}
-              style={{
-                padding: '0.75rem',
-                backgroundColor: 'var(--background)',
-                border: '1px solid var(--border)',
-                borderRadius: '0.5rem',
-                color: 'var(--text)',
-                fontSize: '1rem'
-              }}
+              aria-label="To author"
             />
           </div>
           <button type="submit" className="btn btn-primary" disabled={loading}>
-            {loading ? 'Searching...' : 'Find Path'}
+            {loading ? 'Searching…' : 'Find Path'}
           </button>
         </form>
       </div>
@@ -120,7 +108,7 @@ function CollaborationPath() {
       )}
 
       <div className="section">
-        <h3 className="section-title">💡 Try these examples</h3>
+        <h3 className="section-title">Try these examples</h3>
         <div className="grid grid-2">
           <div className="card">
             <button
