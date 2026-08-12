@@ -1,0 +1,30 @@
+{
+  "name": "research-knowledge-graph",
+  "version": "1.0.0",
+  "description": "Research Knowledge Graph Explorer using CognoDB",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "NODE_ENV=development node server/server.js",
+    "client": "vite",
+    "build": "vite build",
+    "seed": "node scripts/seed.js",
+    "start": "NODE_ENV=production node server/server.js",
+    "postinstall": "npm run build",
+    "verify": "node scripts/verify-setup.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "neo4j-driver": "^5.14.0",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8",
+    "concurrently": "^8.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "d3": "^7.8.5"
+  }
+}
